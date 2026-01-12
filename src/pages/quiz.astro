@@ -1,0 +1,494 @@
+---
+import Layout from '../layouts/Layout.astro';
+import words from '../../data/words.json';
+
+// Get unique categories and levels for filters
+const categories = [...new Set(words.words.map(w => w.category))].sort();
+const levels = [...new Set(words.words.map(w => w.level))].sort();
+---
+
+<Layout title="Quiz">
+  <!-- Quiz Setup Screen -->
+  <div id="quiz-setup" class="opacity-0 animate-fade-in-up">
+    <div class="text-center mb-10">
+      <h1 class="text-4xl sm:text-5xl mb-3 text-[var(--color-text-primary)]">
+        Start Your Quiz
+      </h1>
+      <p class="text-[var(--color-text-secondary)] text-lg max-w-xl mx-auto">
+        Choose your quiz settings and practice your German vocabulary.
+      </p>
+    </div>
+
+    <div class="max-w-lg mx-auto space-y-8">
+      <!-- Word Selection -->
+      <div class="card p-6">
+        <h3 class="text-lg font-medium text-[var(--color-text-primary)] mb-4">Which words?</h3>
+        <div class="space-y-3">
+          <label class="flex items-center gap-3 p-3 rounded-lg bg-[var(--color-bg-elevated)] cursor-pointer hover:bg-[var(--color-bg-secondary)] transition-colors">
+            <input type="radio" name="word-selection" value="pending" class="w-4 h-4 accent-[var(--color-accent)]" checked />
+            <div>
+              <p class="text-[var(--color-text-primary)] font-medium">Pending words</p>
+              <p class="text-[var(--color-text-muted)] text-sm">New + needs practice</p>
+            </div>
+          </label>
+          <label class="flex items-center gap-3 p-3 rounded-lg bg-[var(--color-bg-elevated)] cursor-pointer hover:bg-[var(--color-bg-secondary)] transition-colors">
+            <input type="radio" name="word-selection" value="all" class="w-4 h-4 accent-[var(--color-accent)]" />
+            <div>
+              <p class="text-[var(--color-text-primary)] font-medium">All words</p>
+              <p class="text-[var(--color-text-muted)] text-sm">Include learned words</p>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Direction -->
+      <div class="card p-6">
+        <h3 class="text-lg font-medium text-[var(--color-text-primary)] mb-4">Quiz direction</h3>
+        <div class="space-y-3">
+          <label class="flex items-center gap-3 p-3 rounded-lg bg-[var(--color-bg-elevated)] cursor-pointer hover:bg-[var(--color-bg-secondary)] transition-colors">
+            <input type="radio" name="direction" value="de-en" class="w-4 h-4 accent-[var(--color-accent)]" checked />
+            <div>
+              <p class="text-[var(--color-text-primary)] font-medium">German → English</p>
+              <p class="text-[var(--color-text-muted)] text-sm">See German, guess meaning</p>
+            </div>
+          </label>
+          <label class="flex items-center gap-3 p-3 rounded-lg bg-[var(--color-bg-elevated)] cursor-pointer hover:bg-[var(--color-bg-secondary)] transition-colors">
+            <input type="radio" name="direction" value="en-de" class="w-4 h-4 accent-[var(--color-accent)]" />
+            <div>
+              <p class="text-[var(--color-text-primary)] font-medium">English → German</p>
+              <p class="text-[var(--color-text-muted)] text-sm">See meaning, guess German word</p>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="card p-6">
+        <h3 class="text-lg font-medium text-[var(--color-text-primary)] mb-4">Filters (optional)</h3>
+
+        <!-- Category Filter -->
+        <div class="mb-4">
+          <label class="text-sm text-[var(--color-text-secondary)] mb-2 block">Category</label>
+          <select id="category-filter" class="w-full bg-[var(--color-bg-elevated)] border border-white/10 rounded-lg px-4 py-3 text-[var(--color-text-primary)] focus:outline-none focus:border-[var(--color-accent)]">
+            <option value="">All categories</option>
+            {categories.map(cat => (
+              <option value={cat} class="capitalize">{cat}</option>
+            ))}
+          </select>
+        </div>
+
+        <!-- Level Filter -->
+        <div>
+          <label class="text-sm text-[var(--color-text-secondary)] mb-2 block">Level</label>
+          <select id="level-filter" class="w-full bg-[var(--color-bg-elevated)] border border-white/10 rounded-lg px-4 py-3 text-[var(--color-text-primary)] focus:outline-none focus:border-[var(--color-accent)]">
+            <option value="">All levels</option>
+            {levels.map(level => (
+              <option value={level}>{level}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <!-- Start Button -->
+      <button id="start-quiz" class="btn btn-primary w-full text-lg py-4">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        Start Quiz
+      </button>
+    </div>
+  </div>
+
+  <!-- Quiz Active Screen -->
+  <div id="quiz-active" class="hidden">
+    <!-- Progress Header -->
+    <div class="mb-8">
+      <div class="flex items-center justify-between mb-2">
+        <button id="quit-quiz" class="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+          Quit
+        </button>
+        <p class="text-[var(--color-text-secondary)]">
+          <span id="current-index">1</span> / <span id="total-count">0</span>
+        </p>
+      </div>
+      <div class="progress-bar">
+        <div id="quiz-progress" class="progress-fill bg-[var(--color-accent)]" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Card Container -->
+    <div id="card-container" class="flex justify-center">
+      <!-- Cards will be inserted here dynamically -->
+    </div>
+
+    <!-- Control Buttons (moved outside card for better mobile UX) -->
+    <div id="quiz-controls" class="flex gap-4 mt-8 justify-center opacity-0 pointer-events-none transition-opacity">
+      <button
+        id="practice-btn"
+        class="btn btn-warning flex-1 max-w-[160px]"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+        Practice
+      </button>
+      <button
+        id="learned-btn"
+        class="btn btn-success flex-1 max-w-[160px]"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        Got it!
+      </button>
+    </div>
+  </div>
+
+  <!-- Quiz Results Screen -->
+  <div id="quiz-results" class="hidden opacity-0 animate-fade-in-up">
+    <div class="text-center mb-10">
+      <div class="w-20 h-20 rounded-full bg-[var(--color-success)]/20 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-10 h-10 text-[var(--color-success)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h1 class="text-4xl sm:text-5xl mb-3 text-[var(--color-text-primary)]">
+        Quiz Complete!
+      </h1>
+      <p class="text-[var(--color-text-secondary)] text-lg">
+        Great work on your German practice.
+      </p>
+    </div>
+
+    <div class="max-w-md mx-auto">
+      <div class="card p-6 mb-8">
+        <div class="grid grid-cols-2 gap-6 text-center">
+          <div>
+            <p class="text-4xl font-[var(--font-display)] text-[var(--color-success)]" id="result-learned">0</p>
+            <p class="text-[var(--color-text-secondary)]">Learned</p>
+          </div>
+          <div>
+            <p class="text-4xl font-[var(--font-display)] text-[var(--color-warning)]" id="result-practice">0</p>
+            <p class="text-[var(--color-text-secondary)]">Need Practice</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <button id="quiz-again" class="btn btn-primary w-full py-4">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          Quiz Again
+        </button>
+        <a href="/" class="btn btn-secondary w-full py-4">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          Back to Dashboard
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script define:vars={{ allWords: words.words }}>
+  // State
+  let quizWords = [];
+  let currentIndex = 0;
+  let direction = 'de-en';
+  let results = { learned: 0, practice: 0 };
+  let isFlipped = false;
+
+  // DOM Elements
+  const setupScreen = document.getElementById('quiz-setup');
+  const activeScreen = document.getElementById('quiz-active');
+  const resultsScreen = document.getElementById('quiz-results');
+  const cardContainer = document.getElementById('card-container');
+  const quizControls = document.getElementById('quiz-controls');
+
+  // Check URL params for pre-selected filters
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoryParam = urlParams.get('category');
+  const levelParam = urlParams.get('level');
+
+  if (categoryParam) {
+    document.getElementById('category-filter').value = categoryParam;
+  }
+  if (levelParam) {
+    document.getElementById('level-filter').value = levelParam;
+  }
+
+  // Get progress from localStorage
+  function getProgress() {
+    return JSON.parse(localStorage.getItem('deutschanki_progress') || '{}');
+  }
+
+  // Save progress to localStorage
+  function saveProgress(wordId, status) {
+    const progress = getProgress();
+    progress[wordId] = status;
+    localStorage.setItem('deutschanki_progress', JSON.stringify(progress));
+  }
+
+  // Gender class helpers
+  function getGenderClass(article, type) {
+    if (type === 'verb') return 'gender-verb';
+    if (article === 'der') return 'gender-der';
+    if (article === 'die') return 'gender-die';
+    if (article === 'das') return 'gender-das';
+    return '';
+  }
+
+  function getTagClass(article, type) {
+    if (type === 'verb') return 'tag-verb';
+    if (article === 'der') return 'tag-der';
+    if (article === 'die') return 'tag-die';
+    if (article === 'das') return 'tag-das';
+    return '';
+  }
+
+  // Render current card
+  function renderCard() {
+    if (currentIndex >= quizWords.length) {
+      showResults();
+      return;
+    }
+
+    const word = quizWords[currentIndex];
+    const genderClass = getGenderClass(word.article, word.type);
+    const tagClass = getTagClass(word.article, word.type);
+
+    // Build conjugation HTML if verb
+    let conjugationHTML = '';
+    if (word.type === 'verb' && word.conjugation) {
+      conjugationHTML = `
+        <div class="mt-4 w-full max-w-xs">
+          <p class="text-[var(--color-text-muted)] text-xs uppercase tracking-wider mb-2">Conjugation</p>
+          <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
+            ${Object.entries(word.conjugation).map(([pronoun, form]) => `
+              <div class="flex justify-between">
+                <span class="text-[var(--color-text-muted)]">${pronoun}</span>
+                <span class="text-[var(--color-text-primary)]">${form}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    // Front content based on direction
+    const frontContent = direction === 'de-en' ? `
+      <p class="text-4xl font-[var(--font-display)] text-[var(--color-text-primary)] mb-4">
+        ${word.type === 'noun' ? `${word.article} ${word.word}` : word.word}
+      </p>
+      ${word.type === 'noun' && word.plural ? `
+        <p class="text-lg text-[var(--color-text-secondary)] mb-4">
+          Plural: <span class="text-[var(--color-text-primary)]">die ${word.plural}</span>
+        </p>
+      ` : ''}
+      <div class="mt-6 px-4 py-3 bg-[var(--color-bg-elevated)] rounded-lg">
+        <p class="text-[var(--color-text-secondary)] italic text-sm">"${word.example}"</p>
+      </div>
+    ` : `
+      <p class="text-3xl font-[var(--font-display)] text-[var(--color-text-primary)] mb-4">
+        ${word.meaning}
+      </p>
+      <p class="text-[var(--color-text-muted)] capitalize">${word.category}</p>
+    `;
+
+    // Back content based on direction
+    const backContent = direction === 'de-en' ? `
+      <p class="text-3xl font-[var(--font-display)] text-[var(--color-text-primary)] mb-4">
+        ${word.meaning}
+      </p>
+      ${word.explanation ? `
+        <p class="text-[var(--color-text-secondary)] text-sm max-w-xs mb-4">${word.explanation}</p>
+      ` : ''}
+      ${conjugationHTML}
+    ` : `
+      <p class="text-4xl font-[var(--font-display)] text-[var(--color-text-primary)] mb-4">
+        ${word.type === 'noun' ? `${word.article} ${word.word}` : word.word}
+      </p>
+      ${word.type === 'noun' && word.plural ? `
+        <p class="text-lg text-[var(--color-text-secondary)] mb-2">
+          Plural: <span class="text-[var(--color-text-primary)]">die ${word.plural}</span>
+        </p>
+      ` : ''}
+      <div class="mt-4 px-4 py-3 bg-[var(--color-bg-elevated)] rounded-lg">
+        <p class="text-[var(--color-text-secondary)] italic text-sm">"${word.example}"</p>
+      </div>
+      ${word.explanation ? `
+        <p class="text-[var(--color-text-muted)] text-xs mt-3 max-w-xs">${word.explanation}</p>
+      ` : ''}
+      ${conjugationHTML}
+    `;
+
+    cardContainer.innerHTML = `
+      <div class="flashcard-container w-full max-w-md ${genderClass}">
+        <div class="flashcard w-full h-[420px] cursor-pointer" id="quiz-card">
+          <div class="flashcard-face flashcard-front bg-[var(--color-bg-card)] border border-white/10 p-8 shadow-2xl" style="box-shadow: var(--gender-glow), var(--shadow-elevated);">
+            <div class="flex items-center justify-between mb-6">
+              <span class="tag ${tagClass}">${word.type === 'verb' ? 'verb' : word.article}</span>
+              <span class="tag tag-level">${word.level}</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center justify-center text-center">
+              ${frontContent}
+            </div>
+            <div class="text-center mt-6">
+              <p class="text-[var(--color-text-muted)] text-sm flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                </svg>
+                Tap to flip
+              </p>
+            </div>
+          </div>
+          <div class="flashcard-face flashcard-back bg-[var(--color-bg-card)] border border-white/10 p-8 shadow-2xl" style="box-shadow: var(--gender-glow), var(--shadow-elevated);">
+            <div class="flex items-center justify-between mb-6">
+              <span class="tag ${tagClass}">${word.type === 'verb' ? 'verb' : word.article}</span>
+              <span class="tag tag-level">${word.level}</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center justify-center text-center">
+              ${backContent}
+            </div>
+            <div class="text-center mt-4">
+              <span class="text-[var(--color-text-muted)] text-xs uppercase tracking-wider capitalize">${word.category}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Update progress
+    document.getElementById('current-index').textContent = currentIndex + 1;
+    document.getElementById('total-count').textContent = quizWords.length;
+    document.getElementById('quiz-progress').style.width = `${((currentIndex + 1) / quizWords.length) * 100}%`;
+
+    // Reset flip state and controls
+    isFlipped = false;
+    quizControls.classList.add('opacity-0', 'pointer-events-none');
+
+    // Add click handler for flip
+    const card = document.getElementById('quiz-card');
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+      isFlipped = !isFlipped;
+      if (isFlipped) {
+        quizControls.classList.remove('opacity-0', 'pointer-events-none');
+      }
+    });
+  }
+
+  // Start quiz
+  function startQuiz() {
+    const wordSelection = document.querySelector('input[name="word-selection"]:checked').value;
+    direction = document.querySelector('input[name="direction"]:checked').value;
+    const categoryFilter = document.getElementById('category-filter').value;
+    const levelFilter = document.getElementById('level-filter').value;
+    const progress = getProgress();
+
+    // Filter words
+    let filtered = [...allWords];
+
+    if (categoryFilter) {
+      filtered = filtered.filter(w => w.category === categoryFilter);
+    }
+    if (levelFilter) {
+      filtered = filtered.filter(w => w.level === levelFilter);
+    }
+
+    if (wordSelection === 'pending') {
+      filtered = filtered.filter(w => {
+        const status = progress[w.id];
+        return !status || status === 'practice';
+      });
+    }
+
+    // Shuffle
+    quizWords = filtered.sort(() => Math.random() - 0.5);
+
+    if (quizWords.length === 0) {
+      alert('No words match your filters. Try different settings.');
+      return;
+    }
+
+    // Reset state
+    currentIndex = 0;
+    results = { learned: 0, practice: 0 };
+
+    // Show active screen
+    setupScreen.classList.add('hidden');
+    activeScreen.classList.remove('hidden');
+
+    renderCard();
+  }
+
+  // Handle answer
+  function handleAnswer(status) {
+    const word = quizWords[currentIndex];
+    saveProgress(word.id, status);
+
+    if (status === 'learned') {
+      results.learned++;
+    } else {
+      results.practice++;
+    }
+
+    currentIndex++;
+    renderCard();
+  }
+
+  // Show results
+  function showResults() {
+    activeScreen.classList.add('hidden');
+    resultsScreen.classList.remove('hidden');
+    resultsScreen.classList.remove('opacity-0');
+
+    document.getElementById('result-learned').textContent = results.learned;
+    document.getElementById('result-practice').textContent = results.practice;
+  }
+
+  // Reset quiz
+  function resetQuiz() {
+    resultsScreen.classList.add('hidden');
+    setupScreen.classList.remove('hidden');
+  }
+
+  // Quit quiz
+  function quitQuiz() {
+    if (confirm('Are you sure you want to quit? Your progress will be saved.')) {
+      activeScreen.classList.add('hidden');
+      setupScreen.classList.remove('hidden');
+    }
+  }
+
+  // Event listeners
+  document.getElementById('start-quiz').addEventListener('click', startQuiz);
+  document.getElementById('quit-quiz').addEventListener('click', quitQuiz);
+  document.getElementById('quiz-again').addEventListener('click', resetQuiz);
+  document.getElementById('practice-btn').addEventListener('click', () => handleAnswer('practice'));
+  document.getElementById('learned-btn').addEventListener('click', () => handleAnswer('learned'));
+
+  // Keyboard support
+  document.addEventListener('keydown', (e) => {
+    if (activeScreen.classList.contains('hidden')) return;
+
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      const card = document.getElementById('quiz-card');
+      if (card) {
+        card.click();
+      }
+    } else if (isFlipped) {
+      if (e.key === 'ArrowLeft' || e.key === '1') {
+        handleAnswer('practice');
+      } else if (e.key === 'ArrowRight' || e.key === '2') {
+        handleAnswer('learned');
+      }
+    }
+  });
+</script>

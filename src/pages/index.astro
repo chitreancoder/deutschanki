@@ -1,0 +1,210 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StatsCard from '../components/StatsCard.astro';
+import words from '../../data/words.json';
+
+// Calculate stats from words
+const totalWords = words.words.length;
+const nouns = words.words.filter(w => w.type === 'noun');
+const verbs = words.words.filter(w => w.type === 'verb');
+
+const derCount = nouns.filter(w => w.article === 'der').length;
+const dieCount = nouns.filter(w => w.article === 'die').length;
+const dasCount = nouns.filter(w => w.article === 'das').length;
+const verbCount = verbs.length;
+
+// Get unique categories
+const categories = [...new Set(words.words.map(w => w.category))];
+
+// Get levels
+const levels = [...new Set(words.words.map(w => w.level))].sort();
+const wordsByLevel = levels.map(level => ({
+  level,
+  count: words.words.filter(w => w.level === level).length
+}));
+---
+
+<Layout title="Dashboard">
+  <!-- Hero Section -->
+  <section class="mb-10 opacity-0 animate-fade-in-up">
+    <div class="text-center mb-8">
+      <h1 class="text-4xl sm:text-5xl mb-3 text-[var(--color-text-primary)]">
+        Your German Journey
+      </h1>
+      <p class="text-[var(--color-text-secondary)] text-lg max-w-xl mx-auto">
+        Master vocabulary through focused practice. Track your progress and conquer German grammar.
+      </p>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/quiz" class="btn btn-primary text-lg px-8 py-4">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        Start Quiz
+      </a>
+      <a href="/browse" class="btn btn-secondary text-lg px-8 py-4">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+        </svg>
+        Browse Words
+      </a>
+    </div>
+  </section>
+
+  <!-- Progress Overview -->
+  <section class="mb-10 opacity-0 animate-fade-in-up stagger-1">
+    <h2 class="text-2xl mb-5 text-[var(--color-text-primary)]">Your Progress</h2>
+
+    <div class="card p-6">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+        <div>
+          <p class="text-[var(--color-text-secondary)]">Words Learned</p>
+          <p class="text-3xl font-[var(--font-display)]">
+            <span id="learned-count">0</span>
+            <span class="text-[var(--color-text-muted)] text-xl">/ {totalWords}</span>
+          </p>
+        </div>
+        <div class="text-right">
+          <p class="text-[var(--color-text-muted)] text-sm" id="progress-percent">0% complete</p>
+        </div>
+      </div>
+
+      <div class="progress-bar">
+        <div
+          class="progress-fill bg-gradient-to-r from-[var(--color-der)] via-[var(--color-die)] to-[var(--color-das)]"
+          id="progress-bar"
+          style="width: 0%"
+        ></div>
+      </div>
+
+      <div class="mt-4 flex gap-4 text-sm">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-[var(--color-success)]"></span>
+          <span class="text-[var(--color-text-secondary)]">Learned: <span id="learned-stat">0</span></span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-[var(--color-warning)]"></span>
+          <span class="text-[var(--color-text-secondary)]">Needs Practice: <span id="practice-stat">0</span></span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-[var(--color-bg-elevated)]"></span>
+          <span class="text-[var(--color-text-secondary)]">New: <span id="new-stat">{totalWords}</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Grid -->
+  <section class="mb-10 opacity-0 animate-fade-in-up stagger-2">
+    <h2 class="text-2xl mb-5 text-[var(--color-text-primary)]">Word Collection</h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <StatsCard
+        title="der"
+        value={derCount}
+        subtitle="masculine"
+        gender="der"
+      />
+      <StatsCard
+        title="die"
+        value={dieCount}
+        subtitle="feminine"
+        gender="die"
+      />
+      <StatsCard
+        title="das"
+        value={dasCount}
+        subtitle="neuter"
+        gender="das"
+      />
+      <StatsCard
+        title="verbs"
+        value={verbCount}
+        subtitle="actions"
+        gender="verb"
+      />
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="mb-10 opacity-0 animate-fade-in-up stagger-3">
+    <h2 class="text-2xl mb-5 text-[var(--color-text-primary)]">Categories</h2>
+
+    <div class="flex flex-wrap gap-3">
+      {categories.map(category => {
+        const count = words.words.filter(w => w.category === category).length;
+        return (
+          <a
+            href={`/quiz?category=${category}`}
+            class="card px-4 py-3 hover:border-[var(--color-accent)]/30 group cursor-pointer"
+          >
+            <p class="text-[var(--color-text-primary)] font-medium capitalize group-hover:text-[var(--color-accent)] transition-colors">
+              {category}
+            </p>
+            <p class="text-[var(--color-text-muted)] text-sm">{count} words</p>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- Levels -->
+  <section class="opacity-0 animate-fade-in-up stagger-4">
+    <h2 class="text-2xl mb-5 text-[var(--color-text-primary)]">By Level</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {wordsByLevel.map(({ level, count }) => (
+        <a
+          href={`/quiz?level=${level}`}
+          class="card p-5 hover:border-[var(--color-accent)]/30 group cursor-pointer"
+        >
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="tag tag-level">{level}</span>
+              <p class="text-[var(--color-text-primary)] font-medium mt-2 group-hover:text-[var(--color-accent)] transition-colors">
+                {count} words
+              </p>
+            </div>
+            <svg class="w-5 h-5 text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ totalWords }}>
+  // Load progress from localStorage
+  function loadProgress() {
+    const progress = JSON.parse(localStorage.getItem('deutschanki_progress') || '{}');
+
+    let learned = 0;
+    let needsPractice = 0;
+
+    Object.values(progress).forEach(status => {
+      if (status === 'learned') learned++;
+      else if (status === 'practice') needsPractice++;
+    });
+
+    const newWords = totalWords - learned - needsPractice;
+    const percent = Math.round((learned / totalWords) * 100);
+
+    // Update UI
+    document.getElementById('learned-count').textContent = learned;
+    document.getElementById('progress-percent').textContent = `${percent}% complete`;
+    document.getElementById('progress-bar').style.width = `${percent}%`;
+    document.getElementById('learned-stat').textContent = learned;
+    document.getElementById('practice-stat').textContent = needsPractice;
+    document.getElementById('new-stat').textContent = newWords;
+  }
+
+  // Load on page load
+  loadProgress();
+
+  // Listen for storage changes (from quiz page)
+  window.addEventListener('storage', loadProgress);
+</script>

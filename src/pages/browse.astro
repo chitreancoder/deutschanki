@@ -1,0 +1,368 @@
+---
+import Layout from '../layouts/Layout.astro';
+import words from '../../data/words.json';
+
+// Get unique categories and levels
+const categories = [...new Set(words.words.map(w => w.category))].sort();
+const levels = [...new Set(words.words.map(w => w.level))].sort();
+---
+
+<Layout title="Browse Words">
+  <div class="opacity-0 animate-fade-in-up">
+    <div class="mb-8">
+      <h1 class="text-4xl sm:text-5xl mb-3 text-[var(--color-text-primary)]">
+        Browse Words
+      </h1>
+      <p class="text-[var(--color-text-secondary)] text-lg">
+        Explore your entire vocabulary collection.
+      </p>
+    </div>
+
+    <!-- Search and Filters -->
+    <div class="card p-4 mb-8 opacity-0 animate-fade-in-up stagger-1">
+      <!-- Search -->
+      <div class="relative mb-4">
+        <svg class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search words..."
+          class="search-input"
+        />
+      </div>
+
+      <!-- Filter Chips -->
+      <div class="flex flex-wrap gap-2">
+        <!-- Gender Filters -->
+        <button class="filter-chip active" data-filter="gender" data-value="all">All</button>
+        <button class="filter-chip" data-filter="gender" data-value="der">
+          <span class="w-2 h-2 rounded-full bg-[var(--color-der)] mr-1.5 inline-block"></span>
+          der
+        </button>
+        <button class="filter-chip" data-filter="gender" data-value="die">
+          <span class="w-2 h-2 rounded-full bg-[var(--color-die)] mr-1.5 inline-block"></span>
+          die
+        </button>
+        <button class="filter-chip" data-filter="gender" data-value="das">
+          <span class="w-2 h-2 rounded-full bg-[var(--color-das)] mr-1.5 inline-block"></span>
+          das
+        </button>
+        <button class="filter-chip" data-filter="gender" data-value="verb">
+          <span class="w-2 h-2 rounded-full bg-[var(--color-accent)] mr-1.5 inline-block"></span>
+          verbs
+        </button>
+
+        <span class="w-px h-6 bg-white/10 mx-2 self-center"></span>
+
+        <!-- Category Dropdown -->
+        <select id="category-select" class="filter-chip bg-[var(--color-bg-elevated)] border-none cursor-pointer appearance-none pr-8">
+          <option value="">All Categories</option>
+          {categories.map(cat => (
+            <option value={cat} class="capitalize">{cat}</option>
+          ))}
+        </select>
+
+        <!-- Level Dropdown -->
+        <select id="level-select" class="filter-chip bg-[var(--color-bg-elevated)] border-none cursor-pointer appearance-none pr-8">
+          <option value="">All Levels</option>
+          {levels.map(level => (
+            <option value={level}>{level}</option>
+          ))}
+        </select>
+
+        <!-- Status Filter -->
+        <select id="status-select" class="filter-chip bg-[var(--color-bg-elevated)] border-none cursor-pointer appearance-none pr-8">
+          <option value="">All Status</option>
+          <option value="learned">Learned</option>
+          <option value="practice">Needs Practice</option>
+          <option value="new">New</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Results Count -->
+    <div class="flex items-center justify-between mb-4 opacity-0 animate-fade-in-up stagger-2">
+      <p class="text-[var(--color-text-secondary)]">
+        <span id="results-count">{words.words.length}</span> words
+      </p>
+      <button id="reset-filters" class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors">
+        Reset filters
+      </button>
+    </div>
+
+    <!-- Word List -->
+    <div id="word-list" class="space-y-3 opacity-0 animate-fade-in-up stagger-3">
+      {words.words.map((word, index) => {
+        const tagClass = word.type === 'verb' ? 'tag-verb' :
+                        word.article === 'der' ? 'tag-der' :
+                        word.article === 'die' ? 'tag-die' : 'tag-das';
+
+        const genderClass = word.type === 'verb' ? 'gender-verb' :
+                           word.article === 'der' ? 'gender-der' :
+                           word.article === 'die' ? 'gender-die' : 'gender-das';
+
+        return (
+          <div
+            class={`word-item card p-4 ${genderClass} cursor-pointer hover:scale-[1.01] transition-transform`}
+            data-word={word.word.toLowerCase()}
+            data-meaning={word.meaning.toLowerCase()}
+            data-gender={word.type === 'verb' ? 'verb' : word.article}
+            data-category={word.category}
+            data-level={word.level}
+            data-id={word.id}
+          >
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap mb-1">
+                  <span class={`tag ${tagClass}`}>{word.type === 'verb' ? 'verb' : word.article}</span>
+                  <span class="tag tag-level">{word.level}</span>
+                  <span class="text-[var(--color-text-muted)] text-xs capitalize">{word.category}</span>
+                </div>
+
+                <p class="text-xl font-[var(--font-display)] text-[var(--color-text-primary)] mb-1">
+                  {word.type === 'noun' ? `${word.article} ${word.word}` : word.word}
+                  {word.type === 'noun' && word.plural && (
+                    <span class="text-[var(--color-text-muted)] text-sm font-[var(--font-body)] ml-2">
+                      (pl: {word.plural})
+                    </span>
+                  )}
+                </p>
+
+                <p class="text-[var(--color-text-secondary)]">{word.meaning}</p>
+
+                {word.explanation && (
+                  <p class="text-[var(--color-text-muted)] text-sm mt-1">{word.explanation}</p>
+                )}
+              </div>
+
+              <div class="flex flex-col items-end gap-2">
+                <span class="status-indicator w-3 h-3 rounded-full bg-[var(--color-bg-elevated)]" data-word-id={word.id}></span>
+                <a
+                  href={`/quiz?category=${word.category}`}
+                  class="text-xs text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors"
+                >
+                  Quiz →
+                </a>
+              </div>
+            </div>
+
+            {/* Expanded details (hidden by default) */}
+            <div class="word-details hidden mt-4 pt-4 border-t border-white/5">
+              <p class="text-[var(--color-text-secondary)] italic mb-3">"{word.example}"</p>
+
+              {word.type === 'verb' && word.conjugation && (
+                <div>
+                  <p class="text-[var(--color-text-muted)] text-xs uppercase tracking-wider mb-2">Conjugation</p>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1 text-sm">
+                    {Object.entries(word.conjugation).map(([pronoun, form]) => (
+                      <div class="flex justify-between">
+                        <span class="text-[var(--color-text-muted)]">{pronoun}</span>
+                        <span class="text-[var(--color-text-primary)]">{form}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Quick Actions */}
+              <div class="flex gap-2 mt-4">
+                <button class="mark-learned btn btn-success text-sm py-2 px-4" data-word-id={word.id}>
+                  Mark Learned
+                </button>
+                <button class="mark-practice btn btn-warning text-sm py-2 px-4" data-word-id={word.id}>
+                  Needs Practice
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-16">
+      <svg class="w-16 h-16 mx-auto text-[var(--color-text-muted)] mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <p class="text-[var(--color-text-muted)] text-lg">No words found</p>
+      <p class="text-[var(--color-text-muted)] text-sm mt-1">Try adjusting your filters</p>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // State
+  let activeGender = 'all';
+  let activeCategory = '';
+  let activeLevel = '';
+  let activeStatus = '';
+  let searchQuery = '';
+
+  // DOM Elements
+  const searchInput = document.getElementById('search-input');
+  const wordItems = document.querySelectorAll('.word-item');
+  const resultsCount = document.getElementById('results-count');
+  const emptyState = document.getElementById('empty-state');
+  const wordList = document.getElementById('word-list');
+
+  // Get progress from localStorage
+  function getProgress() {
+    return JSON.parse(localStorage.getItem('deutschanki_progress') || '{}');
+  }
+
+  // Save progress
+  function saveProgress(wordId, status) {
+    const progress = getProgress();
+    progress[wordId] = status;
+    localStorage.setItem('deutschanki_progress', JSON.stringify(progress));
+    updateStatusIndicators();
+    filterWords();
+  }
+
+  // Update status indicators
+  function updateStatusIndicators() {
+    const progress = getProgress();
+    document.querySelectorAll('.status-indicator').forEach(indicator => {
+      const wordId = indicator.dataset.wordId;
+      const status = progress[wordId];
+
+      indicator.classList.remove('bg-[var(--color-success)]', 'bg-[var(--color-warning)]', 'bg-[var(--color-bg-elevated)]');
+
+      if (status === 'learned') {
+        indicator.classList.add('bg-[var(--color-success)]');
+      } else if (status === 'practice') {
+        indicator.classList.add('bg-[var(--color-warning)]');
+      } else {
+        indicator.classList.add('bg-[var(--color-bg-elevated)]');
+      }
+    });
+  }
+
+  // Filter words
+  function filterWords() {
+    const progress = getProgress();
+    let visibleCount = 0;
+
+    wordItems.forEach(item => {
+      const word = item.dataset.word;
+      const meaning = item.dataset.meaning;
+      const gender = item.dataset.gender;
+      const category = item.dataset.category;
+      const level = item.dataset.level;
+      const wordId = item.dataset.id;
+      const status = progress[wordId] || 'new';
+
+      // Check all filters
+      const matchesSearch = !searchQuery ||
+        word.includes(searchQuery.toLowerCase()) ||
+        meaning.includes(searchQuery.toLowerCase());
+
+      const matchesGender = activeGender === 'all' || gender === activeGender;
+      const matchesCategory = !activeCategory || category === activeCategory;
+      const matchesLevel = !activeLevel || level === activeLevel;
+      const matchesStatus = !activeStatus || status === activeStatus;
+
+      if (matchesSearch && matchesGender && matchesCategory && matchesLevel && matchesStatus) {
+        item.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+
+    resultsCount.textContent = visibleCount;
+
+    // Show/hide empty state
+    if (visibleCount === 0) {
+      emptyState.classList.remove('hidden');
+      wordList.classList.add('hidden');
+    } else {
+      emptyState.classList.add('hidden');
+      wordList.classList.remove('hidden');
+    }
+  }
+
+  // Search handler
+  searchInput.addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    filterWords();
+  });
+
+  // Gender filter handler
+  document.querySelectorAll('[data-filter="gender"]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      // Update active state
+      document.querySelectorAll('[data-filter="gender"]').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeGender = chip.dataset.value;
+      filterWords();
+    });
+  });
+
+  // Category filter
+  document.getElementById('category-select').addEventListener('change', (e) => {
+    activeCategory = e.target.value;
+    filterWords();
+  });
+
+  // Level filter
+  document.getElementById('level-select').addEventListener('change', (e) => {
+    activeLevel = e.target.value;
+    filterWords();
+  });
+
+  // Status filter
+  document.getElementById('status-select').addEventListener('change', (e) => {
+    activeStatus = e.target.value;
+    filterWords();
+  });
+
+  // Reset filters
+  document.getElementById('reset-filters').addEventListener('click', () => {
+    searchInput.value = '';
+    searchQuery = '';
+    activeGender = 'all';
+    activeCategory = '';
+    activeLevel = '';
+    activeStatus = '';
+
+    document.querySelectorAll('[data-filter="gender"]').forEach(c => c.classList.remove('active'));
+    document.querySelector('[data-filter="gender"][data-value="all"]').classList.add('active');
+    document.getElementById('category-select').value = '';
+    document.getElementById('level-select').value = '';
+    document.getElementById('status-select').value = '';
+
+    filterWords();
+  });
+
+  // Toggle word details on click
+  wordItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      // Don't toggle if clicking on a button or link
+      if (e.target.closest('button') || e.target.closest('a')) return;
+
+      const details = item.querySelector('.word-details');
+      details.classList.toggle('hidden');
+    });
+  });
+
+  // Mark learned/practice buttons
+  document.querySelectorAll('.mark-learned').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      saveProgress(btn.dataset.wordId, 'learned');
+    });
+  });
+
+  document.querySelectorAll('.mark-practice').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      saveProgress(btn.dataset.wordId, 'practice');
+    });
+  });
+
+  // Initialize
+  updateStatusIndicators();
+</script>

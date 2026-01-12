@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+  value: string | number;
+  subtitle?: string;
+  gender?: 'der' | 'die' | 'das' | 'verb' | 'neutral';
+  icon?: string;
+}
+
+const { title, value, subtitle, gender = 'neutral', icon } = Astro.props;
+
+const genderClass = gender !== 'neutral' ? `gender-${gender}` : '';
+---
+
+<div class={`card stat-card p-5 ${genderClass}`}>
+  <div class="flex items-start justify-between">
+    <div>
+      <p class="text-[var(--color-text-muted)] text-sm font-medium uppercase tracking-wider mb-1">
+        {title}
+      </p>
+      <p class="text-3xl font-semibold text-[var(--color-text-primary)] font-[var(--font-display)]">
+        {value}
+      </p>
+      {subtitle && (
+        <p class="text-[var(--color-text-secondary)] text-sm mt-1">
+          {subtitle}
+        </p>
+      )}
+    </div>
+    {icon && (
+      <div class="w-10 h-10 rounded-lg bg-[var(--color-bg-elevated)] flex items-center justify-center text-xl">
+        {icon}
+      </div>
+    )}
+  </div>
+</div>

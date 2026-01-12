@@ -1,0 +1,257 @@
+---
+interface Word {
+  id: string;
+  word: string;
+  article: string;
+  type: 'noun' | 'verb';
+  plural?: string;
+  conjugation?: {
+    ich: string;
+    du: string;
+    'er/sie/es': string;
+    wir: string;
+    ihr: string;
+    'sie/Sie': string;
+  };
+  example: string;
+  meaning: string;
+  explanation: string;
+  category: string;
+  level: string;
+}
+
+interface Props {
+  word: Word;
+  direction?: 'de-en' | 'en-de';
+  showControls?: boolean;
+}
+
+const { word, direction = 'de-en', showControls = true } = Astro.props;
+
+// Determine gender class
+const getGenderClass = (article: string, type: string) => {
+  if (type === 'verb') return 'gender-verb';
+  if (article === 'der') return 'gender-der';
+  if (article === 'die') return 'gender-die';
+  if (article === 'das') return 'gender-das';
+  return '';
+};
+
+const getTagClass = (article: string, type: string) => {
+  if (type === 'verb') return 'tag-verb';
+  if (article === 'der') return 'tag-der';
+  if (article === 'die') return 'tag-die';
+  if (article === 'das') return 'tag-das';
+  return '';
+};
+
+const genderClass = getGenderClass(word.article, word.type);
+const tagClass = getTagClass(word.article, word.type);
+---
+
+<div
+  class={`flashcard-container w-full max-w-md mx-auto ${genderClass}`}
+  data-word-id={word.id}
+  data-direction={direction}
+>
+  <div class="flashcard w-full h-[420px] cursor-pointer" id={`card-${word.id}`}>
+    <!-- Front Face -->
+    <div class="flashcard-face flashcard-front bg-[var(--color-bg-card)] border border-white/10 p-8 shadow-2xl"
+         style={`box-shadow: var(--gender-glow), var(--shadow-elevated);`}>
+      <!-- Top Tags -->
+      <div class="flex items-center justify-between mb-6">
+        <span class={`tag ${tagClass}`}>
+          {word.type === 'verb' ? 'verb' : word.article}
+        </span>
+        <span class="tag tag-level">{word.level}</span>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex-1 flex flex-col items-center justify-center text-center">
+        {direction === 'de-en' ? (
+          <>
+            {/* German Word */}
+            <p class="text-4xl font-[var(--font-display)] text-[var(--color-text-primary)] mb-4">
+              {word.type === 'noun' ? `${word.article} ${word.word}` : word.word}
+            </p>
+
+            {/* Plural for nouns */}
+            {word.type === 'noun' && word.plural && (
+              <p class="text-lg text-[var(--color-text-secondary)] mb-4">
+                Plural: <span class="text-[var(--color-text-primary)]">die {word.plural}</span>
+              </p>
+            )}
+
+            {/* Example sentence */}
+            <div class="mt-6 px-4 py-3 bg-[var(--color-bg-elevated)] rounded-lg">
+              <p class="text-[var(--color-text-secondary)] italic text-sm">
+                "{word.example}"
+              </p>
+            </div>
+          </>
+        ) : (
+          <>
+            {/* English Meaning */}
+            <p class="text-3xl font-[var(--font-display)] text-[var(--color-text-primary)] mb-4">
+              {word.meaning}
+            </p>
+            <p class="text-[var(--color-text-muted)] capitalize">
+              {word.category}
+            </p>
+          </>
+        )}
+      </div>
+
+      <!-- Tap hint -->
+      <div class="text-center mt-6">
+        <p class="text-[var(--color-text-muted)] text-sm flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+          </svg>
+          Tap to flip
+        </p>
+      </div>
+    </div>
+
+    <!-- Back Face -->
+    <div class="flashcard-face flashcard-back bg-[var(--color-bg-card)] border border-white/10 p-8 shadow-2xl"
+         style={`box-shadow: var(--gender-glow), var(--shadow-elevated);`}>
+      <!-- Top Tags -->
+      <div class="flex items-center justify-between mb-6">
+        <span class={`tag ${tagClass}`}>
+          {word.type === 'verb' ? 'verb' : word.article}
+        </span>
+        <span class="tag tag-level">{word.level}</span>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex-1 flex flex-col items-center justify-center text-center">
+        {direction === 'de-en' ? (
+          <>
+            {/* English Meaning */}
+            <p class="text-3xl font-[var(--font-display)] text-[var(--color-text-primary)] mb-4">
+              {word.meaning}
+            </p>
+
+            {/* Explanation if exists */}
+            {word.explanation && (
+              <p class="text-[var(--color-text-secondary)] text-sm max-w-xs mb-4">
+                {word.explanation}
+              </p>
+            )}
+
+            {/* Conjugation for verbs */}
+            {word.type === 'verb' && word.conjugation && (
+              <div class="mt-4 w-full max-w-xs">
+                <p class="text-[var(--color-text-muted)] text-xs uppercase tracking-wider mb-2">Conjugation</p>
+                <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
+                  {Object.entries(word.conjugation).map(([pronoun, form]) => (
+                    <div class="flex justify-between">
+                      <span class="text-[var(--color-text-muted)]">{pronoun}</span>
+                      <span class="text-[var(--color-text-primary)]">{form}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
+        ) : (
+          <>
+            {/* German Word */}
+            <p class="text-4xl font-[var(--font-display)] text-[var(--color-text-primary)] mb-4">
+              {word.type === 'noun' ? `${word.article} ${word.word}` : word.word}
+            </p>
+
+            {/* Plural for nouns */}
+            {word.type === 'noun' && word.plural && (
+              <p class="text-lg text-[var(--color-text-secondary)] mb-2">
+                Plural: <span class="text-[var(--color-text-primary)]">die {word.plural}</span>
+              </p>
+            )}
+
+            {/* Example sentence */}
+            <div class="mt-4 px-4 py-3 bg-[var(--color-bg-elevated)] rounded-lg">
+              <p class="text-[var(--color-text-secondary)] italic text-sm">
+                "{word.example}"
+              </p>
+            </div>
+
+            {/* Explanation if exists */}
+            {word.explanation && (
+              <p class="text-[var(--color-text-muted)] text-xs mt-3 max-w-xs">
+                {word.explanation}
+              </p>
+            )}
+
+            {/* Conjugation for verbs */}
+            {word.type === 'verb' && word.conjugation && (
+              <div class="mt-4 w-full max-w-xs">
+                <p class="text-[var(--color-text-muted)] text-xs uppercase tracking-wider mb-2">Conjugation</p>
+                <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
+                  {Object.entries(word.conjugation).map(([pronoun, form]) => (
+                    <div class="flex justify-between">
+                      <span class="text-[var(--color-text-muted)]">{pronoun}</span>
+                      <span class="text-[var(--color-text-primary)]">{form}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+
+      <!-- Category -->
+      <div class="text-center mt-4">
+        <span class="text-[var(--color-text-muted)] text-xs uppercase tracking-wider capitalize">
+          {word.category}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  {/* Control Buttons */}
+  {showControls && (
+    <div class="flex gap-4 mt-8 justify-center" id={`controls-${word.id}`}>
+      <button
+        class="btn btn-warning flex-1 max-w-[160px] opacity-0 pointer-events-none transition-opacity"
+        id={`practice-btn-${word.id}`}
+        data-action="practice"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+        Practice
+      </button>
+      <button
+        class="btn btn-success flex-1 max-w-[160px] opacity-0 pointer-events-none transition-opacity"
+        id={`learned-btn-${word.id}`}
+        data-action="learned"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        Got it!
+      </button>
+    </div>
+  )}
+</div>
+
+<script>
+  // Handle card flip
+  document.querySelectorAll('.flashcard').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+
+      // Show control buttons after flip
+      const wordId = card.id.replace('card-', '');
+      const practiceBtn = document.getElementById(`practice-btn-${wordId}`);
+      const learnedBtn = document.getElementById(`learned-btn-${wordId}`);
+
+      if (card.classList.contains('flipped')) {
+        practiceBtn?.classList.remove('opacity-0', 'pointer-events-none');
+        learnedBtn?.classList.remove('opacity-0', 'pointer-events-none');
+      }
+    });
+  });
+</script>

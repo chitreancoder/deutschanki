@@ -1,0 +1,169 @@
+{
+  "words": [
+    {
+      "id": "der-tisch-001",
+      "word": "Tisch",
+      "article": "der",
+      "type": "noun",
+      "plural": "Tische",
+      "example": "Der Tisch ist aus Holz.",
+      "meaning": "table",
+      "explanation": "",
+      "category": "everyday",
+      "level": "A1"
+    },
+    {
+      "id": "die-lampe-002",
+      "word": "Lampe",
+      "article": "die",
+      "type": "noun",
+      "plural": "Lampen",
+      "example": "Die Lampe ist sehr hell.",
+      "meaning": "lamp",
+      "explanation": "",
+      "category": "everyday",
+      "level": "A1"
+    },
+    {
+      "id": "das-buch-003",
+      "word": "Buch",
+      "article": "das",
+      "type": "noun",
+      "plural": "Bücher",
+      "example": "Das Buch ist interessant.",
+      "meaning": "book",
+      "explanation": "Note the umlaut in plural (Bücher)",
+      "category": "everyday",
+      "level": "A1"
+    },
+    {
+      "id": "der-kaffee-004",
+      "word": "Kaffee",
+      "article": "der",
+      "type": "noun",
+      "plural": "Kaffees",
+      "example": "Der Kaffee schmeckt gut.",
+      "meaning": "coffee",
+      "explanation": "",
+      "category": "food",
+      "level": "A1"
+    },
+    {
+      "id": "die-arbeit-005",
+      "word": "Arbeit",
+      "article": "die",
+      "type": "noun",
+      "plural": "Arbeiten",
+      "example": "Die Arbeit macht mir Spaß.",
+      "meaning": "work, job",
+      "explanation": "",
+      "category": "work",
+      "level": "A1"
+    },
+    {
+      "id": "das-wasser-006",
+      "word": "Wasser",
+      "article": "das",
+      "type": "noun",
+      "plural": "Wasser",
+      "example": "Das Wasser ist kalt.",
+      "meaning": "water",
+      "explanation": "Plural is the same as singular",
+      "category": "food",
+      "level": "A1"
+    },
+    {
+      "id": "verb-gehen-007",
+      "word": "gehen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "gehe",
+        "du": "gehst",
+        "er/sie/es": "geht",
+        "wir": "gehen",
+        "ihr": "geht",
+        "sie/Sie": "gehen"
+      },
+      "example": "Ich gehe zur Arbeit.",
+      "meaning": "to go, to walk",
+      "explanation": "Regular verb, one of the most common verbs",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-haben-008",
+      "word": "haben",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "habe",
+        "du": "hast",
+        "er/sie/es": "hat",
+        "wir": "haben",
+        "ihr": "habt",
+        "sie/Sie": "haben"
+      },
+      "example": "Ich habe Zeit.",
+      "meaning": "to have",
+      "explanation": "Irregular verb, auxiliary verb for perfect tense",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "der-freund-009",
+      "word": "Freund",
+      "article": "der",
+      "type": "noun",
+      "plural": "Freunde",
+      "example": "Mein Freund kommt aus Berlin.",
+      "meaning": "friend (male), boyfriend",
+      "explanation": "Die Freundin for female friend/girlfriend",
+      "category": "people",
+      "level": "A1"
+    },
+    {
+      "id": "die-stadt-010",
+      "word": "Stadt",
+      "article": "die",
+      "type": "noun",
+      "plural": "Städte",
+      "example": "Die Stadt ist sehr schön.",
+      "meaning": "city, town",
+      "explanation": "Note the umlaut in plural",
+      "category": "places",
+      "level": "A1"
+    },
+    {
+      "id": "das-essen-011",
+      "word": "Essen",
+      "article": "das",
+      "type": "noun",
+      "plural": "Essen",
+      "example": "Das Essen ist lecker.",
+      "meaning": "food, meal",
+      "explanation": "Also a verb (to eat) and a city name",
+      "category": "food",
+      "level": "A1"
+    },
+    {
+      "id": "verb-sprechen-012",
+      "word": "sprechen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "spreche",
+        "du": "sprichst",
+        "er/sie/es": "spricht",
+        "wir": "sprechen",
+        "ihr": "sprecht",
+        "sie/Sie": "sprechen"
+      },
+      "example": "Sprichst du Deutsch?",
+      "meaning": "to speak",
+      "explanation": "Stem-changing verb (e→i)",
+      "category": "actions",
+      "level": "A1"
+    }
+  ]
+}
