@@ -1,172 +1,7 @@
 {
   "words": [
     {
-      "id": "der-tisch-001",
-      "word": "Tisch",
-      "article": "der",
-      "type": "noun",
-      "plural": "Tische",
-      "example": "Der Tisch ist aus Holz.",
-      "meaning": "table",
-      "explanation": "",
-      "category": "everyday",
-      "level": "A1"
-    },
-    {
-      "id": "die-lampe-002",
-      "word": "Lampe",
-      "article": "die",
-      "type": "noun",
-      "plural": "Lampen",
-      "example": "Die Lampe ist sehr hell.",
-      "meaning": "lamp",
-      "explanation": "",
-      "category": "everyday",
-      "level": "A1"
-    },
-    {
-      "id": "das-buch-003",
-      "word": "Buch",
-      "article": "das",
-      "type": "noun",
-      "plural": "Bücher",
-      "example": "Das Buch ist interessant.",
-      "meaning": "book",
-      "explanation": "Note the umlaut in plural (Bücher)",
-      "category": "everyday",
-      "level": "A1"
-    },
-    {
-      "id": "der-kaffee-004",
-      "word": "Kaffee",
-      "article": "der",
-      "type": "noun",
-      "plural": "Kaffees",
-      "example": "Der Kaffee schmeckt gut.",
-      "meaning": "coffee",
-      "explanation": "",
-      "category": "food",
-      "level": "A1"
-    },
-    {
-      "id": "die-arbeit-005",
-      "word": "Arbeit",
-      "article": "die",
-      "type": "noun",
-      "plural": "Arbeiten",
-      "example": "Die Arbeit macht mir Spaß.",
-      "meaning": "work, job",
-      "explanation": "",
-      "category": "work",
-      "level": "A1"
-    },
-    {
-      "id": "das-wasser-006",
-      "word": "Wasser",
-      "article": "das",
-      "type": "noun",
-      "plural": "Wasser",
-      "example": "Das Wasser ist kalt.",
-      "meaning": "water",
-      "explanation": "Plural is the same as singular",
-      "category": "food",
-      "level": "A1"
-    },
-    {
-      "id": "verb-gehen-007",
-      "word": "gehen",
-      "article": "",
-      "type": "verb",
-      "conjugation": {
-        "ich": "gehe",
-        "du": "gehst",
-        "er/sie/es": "geht",
-        "wir": "gehen",
-        "ihr": "geht",
-        "sie/Sie": "gehen"
-      },
-      "example": "Ich gehe zur Arbeit.",
-      "meaning": "to go, to walk",
-      "explanation": "Regular verb, one of the most common verbs",
-      "category": "actions",
-      "level": "A1"
-    },
-    {
-      "id": "verb-haben-008",
-      "word": "haben",
-      "article": "",
-      "type": "verb",
-      "conjugation": {
-        "ich": "habe",
-        "du": "hast",
-        "er/sie/es": "hat",
-        "wir": "haben",
-        "ihr": "habt",
-        "sie/Sie": "haben"
-      },
-      "example": "Ich habe Zeit.",
-      "meaning": "to have",
-      "explanation": "Irregular verb, auxiliary verb for perfect tense",
-      "category": "actions",
-      "level": "A1"
-    },
-    {
-      "id": "der-freund-009",
-      "word": "Freund",
-      "article": "der",
-      "type": "noun",
-      "plural": "Freunde",
-      "example": "Mein Freund kommt aus Berlin.",
-      "meaning": "friend (male), boyfriend",
-      "explanation": "Die Freundin for female friend/girlfriend",
-      "category": "people",
-      "level": "A1"
-    },
-    {
-      "id": "die-stadt-010",
-      "word": "Stadt",
-      "article": "die",
-      "type": "noun",
-      "plural": "Städte",
-      "example": "Die Stadt ist sehr schön.",
-      "meaning": "city, town",
-      "explanation": "Note the umlaut in plural",
-      "category": "places",
-      "level": "A1"
-    },
-    {
-      "id": "das-essen-011",
-      "word": "Essen",
-      "article": "das",
-      "type": "noun",
-      "plural": "Essen",
-      "example": "Das Essen ist lecker.",
-      "meaning": "food, meal",
-      "explanation": "Also a verb (to eat) and a city name",
-      "category": "food",
-      "level": "A1"
-    },
-    {
-      "id": "verb-sprechen-012",
-      "word": "sprechen",
-      "article": "",
-      "type": "verb",
-      "conjugation": {
-        "ich": "spreche",
-        "du": "sprichst",
-        "er/sie/es": "spricht",
-        "wir": "sprechen",
-        "ihr": "sprecht",
-        "sie/Sie": "sprechen"
-      },
-      "example": "Sprichst du Deutsch?",
-      "meaning": "to speak",
-      "explanation": "Stem-changing verb (e→i)",
-      "category": "actions",
-      "level": "A1"
-    },
-    {
-      "id": "das-nordlicht-013",
+      "id": "das-nordlicht-001",
       "word": "Nordlicht",
       "article": "das",
       "type": "noun",
@@ -178,7 +13,7 @@
       "level": "A2"
     },
     {
-      "id": "das-heft-014",
+      "id": "das-heft-002",
       "word": "Heft",
       "article": "das",
       "type": "noun",
@@ -190,7 +25,7 @@
       "level": "A1"
     },
     {
-      "id": "die-meeresfruechte-015",
+      "id": "die-meeresfruechte-003",
       "word": "Meeresfrüchte",
       "article": "die",
       "type": "noun",
@@ -202,7 +37,7 @@
       "level": "A2"
     },
     {
-      "id": "die-kirsche-016",
+      "id": "die-kirsche-004",
       "word": "Kirsche",
       "article": "die",
       "type": "noun",
@@ -214,7 +49,7 @@
       "level": "A1"
     },
     {
-      "id": "der-mantel-017",
+      "id": "der-mantel-005",
       "word": "Mantel",
       "article": "der",
       "type": "noun",
@@ -226,7 +61,7 @@
       "level": "A1"
     },
     {
-      "id": "der-pullover-018",
+      "id": "der-pullover-006",
       "word": "Pullover",
       "article": "der",
       "type": "noun",
@@ -238,7 +73,7 @@
       "level": "A1"
     },
     {
-      "id": "das-haehnchen-019",
+      "id": "das-haehnchen-007",
       "word": "Hähnchen",
       "article": "das",
       "type": "noun",
@@ -250,7 +85,7 @@
       "level": "A1"
     },
     {
-      "id": "der-sport-020",
+      "id": "der-sport-008",
       "word": "Sport",
       "article": "der",
       "type": "noun",
@@ -262,7 +97,7 @@
       "level": "A1"
     },
     {
-      "id": "das-knie-021",
+      "id": "das-knie-009",
       "word": "Knie",
       "article": "das",
       "type": "noun",
@@ -274,7 +109,7 @@
       "level": "A1"
     },
     {
-      "id": "der-kakao-022",
+      "id": "der-kakao-010",
       "word": "Kakao",
       "article": "der",
       "type": "noun",
@@ -286,7 +121,7 @@
       "level": "A1"
     },
     {
-      "id": "der-fan-023",
+      "id": "der-fan-011",
       "word": "Fan",
       "article": "der",
       "type": "noun",
@@ -298,7 +133,7 @@
       "level": "A1"
     },
     {
-      "id": "die-jahreszeit-024",
+      "id": "die-jahreszeit-012",
       "word": "Jahreszeit",
       "article": "die",
       "type": "noun",
@@ -310,7 +145,7 @@
       "level": "A1"
     },
     {
-      "id": "die-kostprobe-025",
+      "id": "die-kostprobe-013",
       "word": "Kostprobe",
       "article": "die",
       "type": "noun",
@@ -322,7 +157,7 @@
       "level": "A2"
     },
     {
-      "id": "der-basketball-026",
+      "id": "der-basketball-014",
       "word": "Basketball",
       "article": "der",
       "type": "noun",
@@ -334,7 +169,7 @@
       "level": "A1"
     },
     {
-      "id": "die-maus-027",
+      "id": "die-maus-015",
       "word": "Maus",
       "article": "die",
       "type": "noun",
@@ -346,7 +181,19 @@
       "level": "A1"
     },
     {
-      "id": "der-horrorfilm-028",
+      "id": "der-kaffee-016",
+      "word": "Kaffee",
+      "article": "der",
+      "type": "noun",
+      "plural": "Kaffees",
+      "example": "Der Kaffee schmeckt gut.",
+      "meaning": "coffee",
+      "explanation": "",
+      "category": "food",
+      "level": "A1"
+    },
+    {
+      "id": "der-horrorfilm-017",
       "word": "Horrorfilm",
       "article": "der",
       "type": "noun",
@@ -358,7 +205,7 @@
       "level": "A1"
     },
     {
-      "id": "der-kirschsaft-029",
+      "id": "der-kirschsaft-018",
       "word": "Kirschsaft",
       "article": "der",
       "type": "noun",
@@ -370,7 +217,7 @@
       "level": "A2"
     },
     {
-      "id": "der-schinken-030",
+      "id": "der-schinken-019",
       "word": "Schinken",
       "article": "der",
       "type": "noun",
@@ -382,7 +229,7 @@
       "level": "A1"
     },
     {
-      "id": "die-limonade-031",
+      "id": "die-limonade-020",
       "word": "Limonade",
       "article": "die",
       "type": "noun",
@@ -394,7 +241,7 @@
       "level": "A1"
     },
     {
-      "id": "der-sekt-032",
+      "id": "der-sekt-021",
       "word": "Sekt",
       "article": "der",
       "type": "noun",
@@ -406,7 +253,7 @@
       "level": "A2"
     },
     {
-      "id": "der-donner-033",
+      "id": "der-donner-022",
       "word": "Donner",
       "article": "der",
       "type": "noun",
@@ -418,7 +265,7 @@
       "level": "A2"
     },
     {
-      "id": "der-hund-034",
+      "id": "der-hund-023",
       "word": "Hund",
       "article": "der",
       "type": "noun",
@@ -430,7 +277,7 @@
       "level": "A1"
     },
     {
-      "id": "die-uebung-035",
+      "id": "die-uebung-024",
       "word": "Übung",
       "article": "die",
       "type": "noun",
@@ -442,7 +289,7 @@
       "level": "A1"
     },
     {
-      "id": "die-gelegenheit-036",
+      "id": "die-gelegenheit-025",
       "word": "Gelegenheit",
       "article": "die",
       "type": "noun",
@@ -454,7 +301,7 @@
       "level": "A2"
     },
     {
-      "id": "die-wahrheit-037",
+      "id": "die-wahrheit-026",
       "word": "Wahrheit",
       "article": "die",
       "type": "noun",
@@ -466,7 +313,7 @@
       "level": "A2"
     },
     {
-      "id": "der-laptop-038",
+      "id": "der-laptop-027",
       "word": "Laptop",
       "article": "der",
       "type": "noun",
@@ -478,7 +325,7 @@
       "level": "A1"
     },
     {
-      "id": "das-maedchen-039",
+      "id": "das-maedchen-028",
       "word": "Mädchen",
       "article": "das",
       "type": "noun",
@@ -490,7 +337,7 @@
       "level": "A1"
     },
     {
-      "id": "das-haus-040",
+      "id": "das-haus-029",
       "word": "Haus",
       "article": "das",
       "type": "noun",
@@ -502,7 +349,7 @@
       "level": "A1"
     },
     {
-      "id": "das-instrument-041",
+      "id": "das-instrument-030",
       "word": "Instrument",
       "article": "das",
       "type": "noun",
@@ -514,7 +361,7 @@
       "level": "A1"
     },
     {
-      "id": "der-geschaeftsmann-042",
+      "id": "der-geschaeftsmann-031",
       "word": "Geschäftsmann",
       "article": "der",
       "type": "noun",
@@ -526,7 +373,7 @@
       "level": "A2"
     },
     {
-      "id": "der-buchhalter-043",
+      "id": "der-buchhalter-032",
       "word": "Buchhalter",
       "article": "der",
       "type": "noun",
@@ -538,7 +385,7 @@
       "level": "A2"
     },
     {
-      "id": "der-bauer-044",
+      "id": "der-bauer-033",
       "word": "Bauer",
       "article": "der",
       "type": "noun",
@@ -550,7 +397,7 @@
       "level": "A2"
     },
     {
-      "id": "adj-verbesserungsfaehig-045",
+      "id": "adj-verbesserungsfaehig-034",
       "word": "verbesserungsfähig",
       "article": "",
       "type": "adjective",
@@ -561,7 +408,7 @@
       "level": "B1"
     },
     {
-      "id": "das-enkelkind-046",
+      "id": "das-enkelkind-035",
       "word": "Enkelkind",
       "article": "das",
       "type": "noun",
@@ -573,7 +420,7 @@
       "level": "A2"
     },
     {
-      "id": "verb-zeichnen-047",
+      "id": "verb-zeichnen-036",
       "word": "zeichnen",
       "article": "",
       "type": "verb",
@@ -592,7 +439,7 @@
       "level": "A1"
     },
     {
-      "id": "die-brezel-048",
+      "id": "die-brezel-037",
       "word": "Brezel",
       "article": "die",
       "type": "noun",
@@ -604,7 +451,7 @@
       "level": "A1"
     },
     {
-      "id": "der-teig-049",
+      "id": "der-teig-038",
       "word": "Teig",
       "article": "der",
       "type": "noun",
@@ -616,7 +463,7 @@
       "level": "A2"
     },
     {
-      "id": "verb-sammeln-050",
+      "id": "verb-sammeln-039",
       "word": "sammeln",
       "article": "",
       "type": "verb",
@@ -635,7 +482,7 @@
       "level": "A1"
     },
     {
-      "id": "die-redewendung-051",
+      "id": "die-redewendung-040",
       "word": "Redewendung",
       "article": "die",
       "type": "noun",
@@ -647,7 +494,7 @@
       "level": "B1"
     },
     {
-      "id": "verb-verschlafen-052",
+      "id": "verb-verschlafen-041",
       "word": "verschlafen",
       "article": "",
       "type": "verb",
@@ -666,7 +513,7 @@
       "level": "A2"
     },
     {
-      "id": "verb-zusammenfassen-053",
+      "id": "verb-zusammenfassen-042",
       "word": "zusammenfassen",
       "article": "",
       "type": "verb",
@@ -685,7 +532,7 @@
       "level": "A2"
     },
     {
-      "id": "die-hausfrau-054",
+      "id": "die-hausfrau-043",
       "word": "Hausfrau",
       "article": "die",
       "type": "noun",
@@ -697,7 +544,7 @@
       "level": "A1"
     },
     {
-      "id": "verb-anrufen-055",
+      "id": "verb-anrufen-044",
       "word": "anrufen",
       "article": "",
       "type": "verb",
@@ -716,7 +563,7 @@
       "level": "A1"
     },
     {
-      "id": "verb-rufen-056",
+      "id": "verb-rufen-045",
       "word": "rufen",
       "article": "",
       "type": "verb",
@@ -735,7 +582,7 @@
       "level": "A1"
     },
     {
-      "id": "das-studium-057",
+      "id": "das-studium-046",
       "word": "Studium",
       "article": "das",
       "type": "noun",
