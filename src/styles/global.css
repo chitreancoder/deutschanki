@@ -9,6 +9,8 @@
   --color-die-light: #F472B6;
   --color-das: #059669;
   --color-das-light: #34D399;
+  --color-adj: #7C3AED;
+  --color-adj-light: #A78BFA;
 
   /* Base Palette */
   --color-bg-primary: #0A0A0B;
@@ -41,6 +43,7 @@
   --shadow-glow-der: 0 0 40px -10px rgba(30, 58, 138, 0.4);
   --shadow-glow-die: 0 0 40px -10px rgba(219, 39, 119, 0.4);
   --shadow-glow-das: 0 0 40px -10px rgba(5, 150, 105, 0.4);
+  --shadow-glow-adj: 0 0 40px -10px rgba(124, 58, 237, 0.4);
 }
 
 /* Base Styles */
@@ -115,6 +118,12 @@ h1, h2, h3 {
   --gender-color: var(--color-accent-dim);
   --gender-color-light: var(--color-accent);
   --gender-glow: 0 0 40px -10px rgba(252, 211, 77, 0.4);
+}
+
+.gender-adj {
+  --gender-color: var(--color-adj);
+  --gender-color-light: var(--color-adj-light);
+  --gender-glow: var(--shadow-glow-adj);
 }
 
 /* Buttons */
@@ -264,6 +273,12 @@ h1, h2, h3 {
   background: rgba(252, 211, 77, 0.15);
   color: var(--color-accent);
   border: 1px solid rgba(252, 211, 77, 0.25);
+}
+
+.tag-adj {
+  background: rgba(124, 58, 237, 0.2);
+  color: var(--color-adj-light);
+  border: 1px solid rgba(124, 58, 237, 0.3);
 }
 
 .tag-level {

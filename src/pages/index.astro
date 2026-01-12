@@ -7,11 +7,13 @@ import words from '../../data/words.json';
 const totalWords = words.words.length;
 const nouns = words.words.filter(w => w.type === 'noun');
 const verbs = words.words.filter(w => w.type === 'verb');
+const adjectives = words.words.filter(w => w.type === 'adjective');
 
 const derCount = nouns.filter(w => w.article === 'der').length;
 const dieCount = nouns.filter(w => w.article === 'die').length;
 const dasCount = nouns.filter(w => w.article === 'das').length;
 const verbCount = verbs.length;
+const adjCount = adjectives.length;
 
 // Get unique categories
 const categories = [...new Set(words.words.map(w => w.category))];
@@ -100,7 +102,7 @@ const wordsByLevel = levels.map(level => ({
   <section class="mb-10 opacity-0 animate-fade-in-up stagger-2">
     <h2 class="text-2xl mb-5 text-[var(--color-text-primary)]">Word Collection</h2>
 
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
       <StatsCard
         title="der"
         value={derCount}
@@ -124,6 +126,12 @@ const wordsByLevel = levels.map(level => ({
         value={verbCount}
         subtitle="actions"
         gender="verb"
+      />
+      <StatsCard
+        title="adj"
+        value={adjCount}
+        subtitle="adjectives"
+        gender="adj"
       />
     </div>
   </section>
