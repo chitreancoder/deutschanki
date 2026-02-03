@@ -2877,6 +2877,823 @@
       "explanation": "Schusswaffe = firearm; Waffenschein = gun license",
       "category": "everyday",
       "level": "A2"
+    },
+    {
+      "id": "verb-helfen-218",
+      "word": "helfen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "helfe",
+        "du": "hilfst",
+        "er/sie/es": "hilft",
+        "wir": "helfen",
+        "ihr": "helft",
+        "sie/Sie": "helfen"
+      },
+      "example": "Kannst du mir helfen?",
+      "meaning": "to help",
+      "explanation": "+ Dat; stem e→i; Partizip: geholfen",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-gefallen-219",
+      "word": "gefallen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "gefalle",
+        "du": "gefällst",
+        "er/sie/es": "gefällt",
+        "wir": "gefallen",
+        "ihr": "gefallt",
+        "sie/Sie": "gefallen"
+      },
+      "example": "Das Buch gefällt mir sehr.",
+      "meaning": "to please, to like (lit: to be pleasing to)",
+      "explanation": "+ Dat; mir gefällt = I like; stem a→ä",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-gehoeren-220",
+      "word": "gehören",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "gehöre",
+        "du": "gehörst",
+        "er/sie/es": "gehört",
+        "wir": "gehören",
+        "ihr": "gehört",
+        "sie/Sie": "gehören"
+      },
+      "example": "Das Buch gehört mir.",
+      "meaning": "to belong to",
+      "explanation": "+ Dat; gehören zu = to be part of",
+      "category": "actions",
+      "level": "A2"
+    },
+    {
+      "id": "verb-glauben-221",
+      "word": "glauben",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "glaube",
+        "du": "glaubst",
+        "er/sie/es": "glaubt",
+        "wir": "glauben",
+        "ihr": "glaubt",
+        "sie/Sie": "glauben"
+      },
+      "example": "Ich glaube dir nicht.",
+      "meaning": "to believe",
+      "explanation": "+ Dat (person); + Akk (thing); glauben an + Akk",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-folgen-222",
+      "word": "folgen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "folge",
+        "du": "folgst",
+        "er/sie/es": "folgt",
+        "wir": "folgen",
+        "ihr": "folgt",
+        "sie/Sie": "folgen"
+      },
+      "example": "Der Hund folgt seinem Besitzer.",
+      "meaning": "to follow",
+      "explanation": "+ Dat; mit sein; Partizip: gefolgt",
+      "category": "actions",
+      "level": "A2"
+    },
+    {
+      "id": "verb-antworten-223",
+      "word": "antworten",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "antworte",
+        "du": "antwortest",
+        "er/sie/es": "antwortet",
+        "wir": "antworten",
+        "ihr": "antwortet",
+        "sie/Sie": "antworten"
+      },
+      "example": "Er antwortet mir nicht.",
+      "meaning": "to answer, to reply",
+      "explanation": "+ Dat (person); auf + Akk (question)",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-gratulieren-224",
+      "word": "gratulieren",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "gratuliere",
+        "du": "gratulierst",
+        "er/sie/es": "gratuliert",
+        "wir": "gratulieren",
+        "ihr": "gratuliert",
+        "sie/Sie": "gratulieren"
+      },
+      "example": "Ich gratuliere dir zum Geburtstag!",
+      "meaning": "to congratulate",
+      "explanation": "+ Dat; zu + Dat (occasion)",
+      "category": "social",
+      "level": "A2"
+    },
+    {
+      "id": "verb-passen-225",
+      "word": "passen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "passe",
+        "du": "passt",
+        "er/sie/es": "passt",
+        "wir": "passen",
+        "ihr": "passt",
+        "sie/Sie": "passen"
+      },
+      "example": "Die Schuhe passen mir nicht.",
+      "meaning": "to fit, to suit",
+      "explanation": "+ Dat; zu + Dat (to match with)",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-schmecken-226",
+      "word": "schmecken",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "schmecke",
+        "du": "schmeckst",
+        "er/sie/es": "schmeckt",
+        "wir": "schmecken",
+        "ihr": "schmeckt",
+        "sie/Sie": "schmecken"
+      },
+      "example": "Das Essen schmeckt mir gut.",
+      "meaning": "to taste",
+      "explanation": "+ Dat; schmeckt mir = I like the taste",
+      "category": "food",
+      "level": "A1"
+    },
+    {
+      "id": "verb-fehlen-227",
+      "word": "fehlen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "fehle",
+        "du": "fehlst",
+        "er/sie/es": "fehlt",
+        "wir": "fehlen",
+        "ihr": "fehlt",
+        "sie/Sie": "fehlen"
+      },
+      "example": "Du fehlst mir sehr.",
+      "meaning": "to be missing, to miss (someone)",
+      "explanation": "+ Dat; du fehlst mir = I miss you",
+      "category": "social",
+      "level": "A2"
+    },
+    {
+      "id": "verb-brauchen-228",
+      "word": "brauchen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "brauche",
+        "du": "brauchst",
+        "er/sie/es": "braucht",
+        "wir": "brauchen",
+        "ihr": "braucht",
+        "sie/Sie": "brauchen"
+      },
+      "example": "Ich brauche deine Hilfe.",
+      "meaning": "to need",
+      "explanation": "+ Akk; nicht brauchen + zu + Inf = don't need to",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-haben-229",
+      "word": "haben",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "habe",
+        "du": "hast",
+        "er/sie/es": "hat",
+        "wir": "haben",
+        "ihr": "habt",
+        "sie/Sie": "haben"
+      },
+      "example": "Ich habe ein Auto.",
+      "meaning": "to have",
+      "explanation": "+ Akk; auxiliary verb for Perfekt; irregular",
+      "category": "grammar",
+      "level": "A1"
+    },
+    {
+      "id": "verb-sehen-230",
+      "word": "sehen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "sehe",
+        "du": "siehst",
+        "er/sie/es": "sieht",
+        "wir": "sehen",
+        "ihr": "seht",
+        "sie/Sie": "sehen"
+      },
+      "example": "Ich sehe einen Vogel.",
+      "meaning": "to see",
+      "explanation": "+ Akk; stem e→ie; Partizip: gesehen",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-hoeren-231",
+      "word": "hören",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "höre",
+        "du": "hörst",
+        "er/sie/es": "hört",
+        "wir": "hören",
+        "ihr": "hört",
+        "sie/Sie": "hören"
+      },
+      "example": "Ich höre Musik.",
+      "meaning": "to hear, to listen",
+      "explanation": "+ Akk; auf + Akk = to listen to (advice)",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-fragen-232",
+      "word": "fragen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "frage",
+        "du": "fragst",
+        "er/sie/es": "fragt",
+        "wir": "fragen",
+        "ihr": "fragt",
+        "sie/Sie": "fragen"
+      },
+      "example": "Darf ich dich etwas fragen?",
+      "meaning": "to ask",
+      "explanation": "+ Akk (person); nach + Dat (about something)",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-bitten-233",
+      "word": "bitten",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "bitte",
+        "du": "bittest",
+        "er/sie/es": "bittet",
+        "wir": "bitten",
+        "ihr": "bittet",
+        "sie/Sie": "bitten"
+      },
+      "example": "Ich bitte dich um Hilfe.",
+      "meaning": "to ask, to request",
+      "explanation": "+ Akk (person) + um + Akk (thing); Partizip: gebeten",
+      "category": "actions",
+      "level": "A2"
+    },
+    {
+      "id": "verb-kennen-234",
+      "word": "kennen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "kenne",
+        "du": "kennst",
+        "er/sie/es": "kennt",
+        "wir": "kennen",
+        "ihr": "kennt",
+        "sie/Sie": "kennen"
+      },
+      "example": "Ich kenne diesen Mann.",
+      "meaning": "to know (person/place)",
+      "explanation": "+ Akk; cf. wissen (to know facts); Partizip: gekannt",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-treffen-235",
+      "word": "treffen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "treffe",
+        "du": "triffst",
+        "er/sie/es": "trifft",
+        "wir": "treffen",
+        "ihr": "trefft",
+        "sie/Sie": "treffen"
+      },
+      "example": "Ich treffe meine Freunde im Café.",
+      "meaning": "to meet, to hit",
+      "explanation": "+ Akk; sich treffen = to meet up; stem e→i",
+      "category": "social",
+      "level": "A1"
+    },
+    {
+      "id": "verb-besuchen-236",
+      "word": "besuchen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "besuche",
+        "du": "besuchst",
+        "er/sie/es": "besucht",
+        "wir": "besuchen",
+        "ihr": "besucht",
+        "sie/Sie": "besuchen"
+      },
+      "example": "Ich besuche meine Großeltern.",
+      "meaning": "to visit",
+      "explanation": "+ Akk; der Besuch = visit",
+      "category": "social",
+      "level": "A1"
+    },
+    {
+      "id": "verb-suchen-237",
+      "word": "suchen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "suche",
+        "du": "suchst",
+        "er/sie/es": "sucht",
+        "wir": "suchen",
+        "ihr": "sucht",
+        "sie/Sie": "suchen"
+      },
+      "example": "Ich suche meine Schlüssel.",
+      "meaning": "to search, to look for",
+      "explanation": "+ Akk; die Suche = search",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-finden-238",
+      "word": "finden",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "finde",
+        "du": "findest",
+        "er/sie/es": "findet",
+        "wir": "finden",
+        "ihr": "findet",
+        "sie/Sie": "finden"
+      },
+      "example": "Ich finde das Buch interessant.",
+      "meaning": "to find, to think/consider",
+      "explanation": "+ Akk; ich finde = I think; Partizip: gefunden",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-geben-239",
+      "word": "geben",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "gebe",
+        "du": "gibst",
+        "er/sie/es": "gibt",
+        "wir": "geben",
+        "ihr": "gebt",
+        "sie/Sie": "geben"
+      },
+      "example": "Ich gebe dir das Buch.",
+      "meaning": "to give",
+      "explanation": "+ Dat (person) + Akk (thing); es gibt = there is/are; stem e→i",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-zeigen-240",
+      "word": "zeigen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "zeige",
+        "du": "zeigst",
+        "er/sie/es": "zeigt",
+        "wir": "zeigen",
+        "ihr": "zeigt",
+        "sie/Sie": "zeigen"
+      },
+      "example": "Ich zeige dir mein Zimmer.",
+      "meaning": "to show",
+      "explanation": "+ Dat (person) + Akk (thing); auf + Akk = to point at",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-schenken-241",
+      "word": "schenken",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "schenke",
+        "du": "schenkst",
+        "er/sie/es": "schenkt",
+        "wir": "schenken",
+        "ihr": "schenkt",
+        "sie/Sie": "schenken"
+      },
+      "example": "Ich schenke meiner Mutter Blumen.",
+      "meaning": "to give (as a gift)",
+      "explanation": "+ Dat (person) + Akk (thing); das Geschenk = gift",
+      "category": "social",
+      "level": "A1"
+    },
+    {
+      "id": "verb-bringen-242",
+      "word": "bringen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "bringe",
+        "du": "bringst",
+        "er/sie/es": "bringt",
+        "wir": "bringen",
+        "ihr": "bringt",
+        "sie/Sie": "bringen"
+      },
+      "example": "Ich bringe dir einen Kaffee.",
+      "meaning": "to bring",
+      "explanation": "+ Dat (person) + Akk (thing); Partizip: gebracht; irregular",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-erklaeren-243",
+      "word": "erklären",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "erkläre",
+        "du": "erklärst",
+        "er/sie/es": "erklärt",
+        "wir": "erklären",
+        "ihr": "erklärt",
+        "sie/Sie": "erklären"
+      },
+      "example": "Kannst du mir das erklären?",
+      "meaning": "to explain",
+      "explanation": "+ Dat (person) + Akk (thing); die Erklärung = explanation",
+      "category": "actions",
+      "level": "A2"
+    },
+    {
+      "id": "verb-empfehlen-244",
+      "word": "empfehlen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "empfehle",
+        "du": "empfiehlst",
+        "er/sie/es": "empfiehlt",
+        "wir": "empfehlen",
+        "ihr": "empfehlt",
+        "sie/Sie": "empfehlen"
+      },
+      "example": "Ich empfehle dir dieses Restaurant.",
+      "meaning": "to recommend",
+      "explanation": "+ Dat (person) + Akk (thing); stem e→ie; die Empfehlung",
+      "category": "social",
+      "level": "A2"
+    },
+    {
+      "id": "verb-leihen-245",
+      "word": "leihen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "leihe",
+        "du": "leihst",
+        "er/sie/es": "leiht",
+        "wir": "leihen",
+        "ihr": "leiht",
+        "sie/Sie": "leihen"
+      },
+      "example": "Kannst du mir 20 Euro leihen?",
+      "meaning": "to lend, to borrow",
+      "explanation": "+ Dat (person) + Akk (thing); Partizip: geliehen; sich leihen = to borrow",
+      "category": "actions",
+      "level": "A2"
+    },
+    {
+      "id": "verb-schicken-246",
+      "word": "schicken",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "schicke",
+        "du": "schickst",
+        "er/sie/es": "schickt",
+        "wir": "schicken",
+        "ihr": "schickt",
+        "sie/Sie": "schicken"
+      },
+      "example": "Ich schicke dir eine Nachricht.",
+      "meaning": "to send",
+      "explanation": "+ Dat (person) + Akk (thing); also: an + Akk",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-wuenschen-247",
+      "word": "wünschen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "wünsche",
+        "du": "wünschst",
+        "er/sie/es": "wünscht",
+        "wir": "wünschen",
+        "ihr": "wünscht",
+        "sie/Sie": "wünschen"
+      },
+      "example": "Ich wünsche dir alles Gute!",
+      "meaning": "to wish",
+      "explanation": "+ Dat (person) + Akk (thing); sich wünschen = to wish for oneself",
+      "category": "social",
+      "level": "A1"
+    },
+    {
+      "id": "verb-kaufen-248",
+      "word": "kaufen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "kaufe",
+        "du": "kaufst",
+        "er/sie/es": "kauft",
+        "wir": "kaufen",
+        "ihr": "kauft",
+        "sie/Sie": "kaufen"
+      },
+      "example": "Ich kaufe mir ein neues Handy.",
+      "meaning": "to buy",
+      "explanation": "+ Akk; + Dat (for someone); der Kauf = purchase",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-nehmen-249",
+      "word": "nehmen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "nehme",
+        "du": "nimmst",
+        "er/sie/es": "nimmt",
+        "wir": "nehmen",
+        "ihr": "nehmt",
+        "sie/Sie": "nehmen"
+      },
+      "example": "Ich nehme einen Kaffee, bitte.",
+      "meaning": "to take",
+      "explanation": "+ Akk; stem e→i; Partizip: genommen; very irregular",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-bezahlen-250",
+      "word": "bezahlen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "bezahle",
+        "du": "bezahlst",
+        "er/sie/es": "bezahlt",
+        "wir": "bezahlen",
+        "ihr": "bezahlt",
+        "sie/Sie": "bezahlen"
+      },
+      "example": "Ich möchte bitte bezahlen.",
+      "meaning": "to pay",
+      "explanation": "+ Akk; die Bezahlung = payment; cf. zahlen",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-warten-251",
+      "word": "warten",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "warte",
+        "du": "wartest",
+        "er/sie/es": "wartet",
+        "wir": "warten",
+        "ihr": "wartet",
+        "sie/Sie": "warten"
+      },
+      "example": "Ich warte auf dich.",
+      "meaning": "to wait",
+      "explanation": "auf + Akk; die Wartezeit = waiting time",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-denken-252",
+      "word": "denken",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "denke",
+        "du": "denkst",
+        "er/sie/es": "denkt",
+        "wir": "denken",
+        "ihr": "denkt",
+        "sie/Sie": "denken"
+      },
+      "example": "Ich denke an dich.",
+      "meaning": "to think",
+      "explanation": "an + Akk; über + Akk (about); Partizip: gedacht",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-sprechen-253",
+      "word": "sprechen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "spreche",
+        "du": "sprichst",
+        "er/sie/es": "spricht",
+        "wir": "sprechen",
+        "ihr": "sprecht",
+        "sie/Sie": "sprechen"
+      },
+      "example": "Ich spreche mit meinem Chef.",
+      "meaning": "to speak",
+      "explanation": "mit + Dat (person); über + Akk (topic); stem e→i",
+      "category": "actions",
+      "level": "A1"
+    },
+    {
+      "id": "verb-interessieren-254",
+      "word": "sich interessieren",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "interessiere mich",
+        "du": "interessierst dich",
+        "er/sie/es": "interessiert sich",
+        "wir": "interessieren uns",
+        "ihr": "interessiert euch",
+        "sie/Sie": "interessieren sich"
+      },
+      "example": "Ich interessiere mich für Musik.",
+      "meaning": "to be interested in",
+      "explanation": "Reflexiv; für + Akk; das Interesse = interest",
+      "category": "actions",
+      "level": "A2"
+    },
+    {
+      "id": "verb-freuen-255",
+      "word": "sich freuen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "freue mich",
+        "du": "freust dich",
+        "er/sie/es": "freut sich",
+        "wir": "freuen uns",
+        "ihr": "freut euch",
+        "sie/Sie": "freuen sich"
+      },
+      "example": "Ich freue mich auf das Wochenende.",
+      "meaning": "to be happy, to look forward to",
+      "explanation": "Reflexiv; auf + Akk (future); über + Akk (present/past)",
+      "category": "social",
+      "level": "A1"
+    },
+    {
+      "id": "verb-erinnern-256",
+      "word": "sich erinnern",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "erinnere mich",
+        "du": "erinnerst dich",
+        "er/sie/es": "erinnert sich",
+        "wir": "erinnern uns",
+        "ihr": "erinnert euch",
+        "sie/Sie": "erinnern sich"
+      },
+      "example": "Ich erinnere mich an unseren Urlaub.",
+      "meaning": "to remember",
+      "explanation": "Reflexiv; an + Akk; jdn erinnern an = to remind sb of",
+      "category": "actions",
+      "level": "A2"
+    },
+    {
+      "id": "verb-kuemmern-257",
+      "word": "sich kümmern",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "kümmere mich",
+        "du": "kümmerst dich",
+        "er/sie/es": "kümmert sich",
+        "wir": "kümmern uns",
+        "ihr": "kümmert euch",
+        "sie/Sie": "kümmern sich"
+      },
+      "example": "Ich kümmere mich um meine Großmutter.",
+      "meaning": "to take care of, to look after",
+      "explanation": "Reflexiv; um + Akk",
+      "category": "actions",
+      "level": "A2"
+    },
+    {
+      "id": "verb-beschweren-258",
+      "word": "sich beschweren",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "beschwere mich",
+        "du": "beschwerst dich",
+        "er/sie/es": "beschwert sich",
+        "wir": "beschweren uns",
+        "ihr": "beschwert euch",
+        "sie/Sie": "beschweren sich"
+      },
+      "example": "Er beschwert sich über das Essen.",
+      "meaning": "to complain",
+      "explanation": "Reflexiv; über + Akk; bei + Dat (to whom)",
+      "category": "social",
+      "level": "A2"
+    },
+    {
+      "id": "verb-entschuldigen-259",
+      "word": "sich entschuldigen",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "entschuldige mich",
+        "du": "entschuldigst dich",
+        "er/sie/es": "entschuldigt sich",
+        "wir": "entschuldigen uns",
+        "ihr": "entschuldigt euch",
+        "sie/Sie": "entschuldigen sich"
+      },
+      "example": "Ich entschuldige mich für die Verspätung.",
+      "meaning": "to apologize",
+      "explanation": "Reflexiv; für + Akk; bei + Dat (to whom); Entschuldigung!",
+      "category": "social",
+      "level": "A2"
+    },
+    {
+      "id": "verb-bedanken-260",
+      "word": "sich bedanken",
+      "article": "",
+      "type": "verb",
+      "conjugation": {
+        "ich": "bedanke mich",
+        "du": "bedankst dich",
+        "er/sie/es": "bedankt sich",
+        "wir": "bedanken uns",
+        "ihr": "bedankt euch",
+        "sie/Sie": "bedanken sich"
+      },
+      "example": "Ich bedanke mich für Ihre Hilfe.",
+      "meaning": "to thank",
+      "explanation": "Reflexiv; für + Akk; bei + Dat (person); more formal than danken",
+      "category": "social",
+      "level": "A2"
     }
   ]
 }
