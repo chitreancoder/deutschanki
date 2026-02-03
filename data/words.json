@@ -2865,6 +2865,18 @@
       "explanation": "+ Akk; sich verstellen = to pretend, to disguise oneself",
       "category": "actions",
       "level": "A2"
+    },
+    {
+      "id": "die-waffe-217",
+      "word": "Waffe",
+      "article": "die",
+      "type": "noun",
+      "plural": "Waffen",
+      "example": "In Deutschland sind Waffen streng kontrolliert.",
+      "meaning": "weapon",
+      "explanation": "Schusswaffe = firearm; Waffenschein = gun license",
+      "category": "everyday",
+      "level": "A2"
     }
   ]
 }
